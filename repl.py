@@ -17,7 +17,8 @@ def REPL():
 
         choice = int(input('Enter the number of the action to perform: '))
         if choice == 1:
-            pass
+            year = input('Enter a year: ')
+            select_categories(year)
         if choice == 2:
             year = input('\nEnter a year: ')
             category = input('Enter a prize: ')
@@ -26,7 +27,8 @@ def REPL():
             category = input('\nEnter a prize: ')
             third_option(category)
         if choice == 4:
-            pass
+            word = input('Enter a keyword: ')
+            find_keyword(word)
         if choice == 5:
             pass
 
