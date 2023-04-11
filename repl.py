@@ -12,7 +12,7 @@ def REPL():
         print('''\n1. Find all award categories in a given year
 2. Find all prize winners in a certain year for a certain prize
 3. Find all winners of a certain prize
-4. Find prize data based on a certain keyword
+4. Find prize motivation based on a certain keyword
 5. Insert new prize data for a new year\n''')
 
         choice = int(input('Enter the number of the action to perform: '))
