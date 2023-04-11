@@ -9,7 +9,7 @@ def REPL():
     print('\nWelcome to the MongoDB Python interaction!')
 
     while True:
-        print('''\n1. Find all award categories
+        print('''\n1. Find all award categories in a given year
 2. Find all prize winners in a certain year for a certain prize
 3. Find all winners of a certain prize
 4. Find prize data based on a certain keyword
@@ -54,7 +54,12 @@ def third_option(category):
         print(f'\nThe winners of {category} are:\n')
         for laureat in laureats:
             print(laureat[0], laureat[1])
-    
+
+def select_categories(year):
+    pass #Danae
+
+def find_keyword(word):
+    pass #Danae
 
 if __name__ == '__main__':
     REPL()
