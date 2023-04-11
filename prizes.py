@@ -5,5 +5,4 @@ main = connect["Main"]
 prizesdb = main["Prizes"]
 
 year = prizesdb.find_one()
-print(year['prizes'][1])
-
+print(year)

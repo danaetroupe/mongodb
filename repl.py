@@ -21,16 +21,16 @@ def REPL():
         if choice == 2:
             year = input('\nEnter a year: ')
             category = input('Enter a prize: ')
-            year_prize_winners(year, category)
+            second_option(year, category)
         if choice == 3:
             category = input('\nEnter a prize: ')
-            prize_winners(category)
+            third_option(category)
         if choice == 4:
             pass
         if choice == 5:
             pass
 
-def year_prize_winners(year, category):
+def second_option(year, category):
     prizes = prizes_collection.find_one()
     prize_array = prizes['prizes']
     for prize in prize_array:
@@ -39,7 +39,7 @@ def year_prize_winners(year, category):
             for laureat in prize['laureates']:
                 print(laureat['firstname'], laureat['surname'])
 
-def prize_winners(category):
+def third_option(category):
     prizes = prizes_collection.find_one()
     prize_array = prizes['prizes']
     laureats = []
