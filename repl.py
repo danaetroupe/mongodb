@@ -58,8 +58,11 @@ def prize_winners(category):
             print(laureat[0], laureat[1])
 
 def select_categories(year):
-    pass #Danae
-    
+    collect = prizes_collection.find_one()
+    prizes = collect['prizes']
+    for prize in prizes:
+        if prize['year'] == str(year):
+            print(prize['category'])
 
 def find_keyword(word):
     for result in prizes_collection.aggregate([{"$project":{"prizes":{"laureates":{"$filter":{"input":"laureates", "cond": {"$regex": word}}}}}}]):
