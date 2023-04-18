@@ -4,6 +4,9 @@ connect = mongo.MongoClient("mongodb+srv://antoniobendanae:antoniobendanae@proje
 main = connect["Main"]
 prizesdb = main["Prizes"]
 
+year = prizesdb.find_one()
+print(year)
+
 # Powerpoint - Antonio
 # Main REPL Loop - Antonio
 
@@ -13,3 +16,8 @@ prizesdb = main["Prizes"]
 # Give (a certain number) of queries involving a certain keyword - Danae
 # See if anbody won a prize multiple data - Antonio
 # Add new prizes for new year - Ben
+
+#git push 
+#git add .
+#git commit -m "message here"
+#git push
