@@ -30,7 +30,13 @@ def REPL():
             word = input('Enter a keyword: ')
             find_keyword(word)
         if choice == 5:
-            print(prizes_collection.find_one())
+            New_Year = input("Enter the New Year: ")
+            Category = input("Enter the Category: ")
+            First_Name = input("Enter the Surname: ")
+            Surname = input("Enter the Motivation: ")
+            Motivation = input("Enter the Motivation: ")
+            Share = input("Enter the Share: ")
+            insert(New_Year , Category , First_Name , Surname , Motivation , Share)
 
 def year_prize_winners(year, category):
     prizes = prizes_collection.find_one()
@@ -69,59 +75,17 @@ def find_keyword(word):
     for result in prizes_collection.aggregate([{"$project":{"prizes":{"laureates":{"$filter":{"input":"laureates", "cond": {"$regex": word}}}}}}]):
         print(result)
 
-def insert(New_Year , Category , First_Name , Surname , Motivation , Share): 
+def insert(year, category, first_name, surname, motivation, share): 
     ## retrieves the Prize Collection to insert information into specific categories ## 
     prizes = prizes_collection.find_one()
-    Prize_Array = prizes["prizes"]
+    array = prizes["prizes"]
 
     ## New Entry for a Possible New Year to be Added ## 
-    New_Entry = {"year":"0" , "category":"0" , "laureates":[{"id":"0" , "firstname":"0" , "surname":"0" , "motivation":"0" , "share":"0"}]} 
-    Old_Entry_Addition = {} 
-
-    ## creates a loop that will go through and find the most recent year ##
-    for Prize in Prize_Array: 
-        if Prize["year"] == New_Year and Prize["category"] == Category:        ## if the Year and Category correspond with the given information than add it to the Older Entry ##                                                                                 
-            ## update the New Year ##                                          ## goes through the Laureates to update the proper information and add a completely new entry ##
-            for Year in New_Entry["year"]:
-                Year["year"] == New_Year
-            ## update the New Category ## 
-            for Category in New_Entry["category"]:
-                Category["category"] == Category
-            for New_Laureates in New_Entry["laureates"]:                              
-                ## updates the First Name ## 
-                if New_Entry["firstname"]: 
-                    New_Entry["firstname"] = First_Name
-                ## updates the SurName ## 
-                elif New_Entry["surname"]:
-                    New_Entry["surname"] = Surname
-                ## updates the Motivation ## 
-                elif New_Entry["motivation"]:
-                    New_Entry["motivation"] = Motivation
-                ## updates the Share ## 
-                elif New_Entry["share"]:
-                    New_Entry["share"] = Share
-        elif New_Year not in Prize:                                            ## if the new proposed year is not in the dictionary than add items to the New_Entry ## 
-            ## update the New Year ## 
-            for Year in New_Entry["year"]:
-                Year["year"] == New_Year
-            ## update the New Category ## 
-            for Category in New_Entry["category"]:
-                Category["category"] == Category
-            for New_Laureates in New_Entry["laureates"]:                              
-                ## updates the First Name ## 
-                if New_Entry["firstname"]: 
-                    New_Entry["firstname"] = First_Name
-                ## updates the SurName ## 
-                elif New_Entry["surname"]:
-                    New_Entry["surname"] = Surname
-                ## updates the Motivation ## 
-                elif New_Entry["motivation"]:
-                    New_Entry["motivation"] = Motivation
-                ## updates the Share ## 
-                elif New_Entry["share"]:
-                    New_Entry["share"] = Share
-        prizes_collection.insert_one(New_Entry)
-
-
+    document = {"year": year, "category": category, "laureates": [{"firstname":first_name , "surname":surname , "motivation":motivation , "share":share}]}
+    prizes_collection.insert_one(document)
+    
 if __name__ == '__main__':
     REPL()
+    
+    
+"C:/danae/Desktop/Programming/prizes.json"
