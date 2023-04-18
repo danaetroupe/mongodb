@@ -12,8 +12,7 @@ def REPL():
         print('''\n1. Find all award categories in a given year
 2. Find all prize winners in a certain year for a certain prize
 3. Find all winners of a certain prize
-4. Find prize motivation based on a certain keyword
-5. Insert new prize data for a new year\n''')
+4. Insert new prize data for a new year\n''')
 
         choice = int(input('Enter the number of the action to perform: '))
         if choice == 1:
@@ -27,9 +26,6 @@ def REPL():
             category = input('\nEnter a prize: ')
             prize_winners(category)
         if choice == 4:
-            word = input('Enter a keyword: ')
-            find_keyword(word)
-        if choice == 5:
             New_Year = input("Enter the New Year: ")
             Category = input("Enter the Category: ")
             First_Name = input("Enter the Surname: ")
@@ -69,11 +65,6 @@ def select_categories(year):
     for prize in prizes:
         if prize['year'] == str(year):
             print(prize['category'])
-    
-
-def find_keyword(word):
-    for result in prizes_collection.aggregate([{"$project":{"prizes":{"laureates":{"$filter":{"input":"laureates", "cond": {"$regex": word}}}}}}]):
-        print(result)
 
 def insert(year, category, first_name, surname, motivation, share): 
     ## retrieves the Prize Collection to insert information into specific categories ## 
